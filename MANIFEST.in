@@ -1,0 +1,3 @@
+include twitter_bootstrap/config/deployment.ini_tmpl
+recursive-include twitter_bootstrap/public *
+recursive-include twitter_bootstrap/templates *
