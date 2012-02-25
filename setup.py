@@ -12,10 +12,6 @@ setup(
     author='',
     author_email='',
     url='',
-    install_requires=[
-        "Pylons>=1.0.1rc1",
-    ],
-    setup_requires=["PasteScript>=1.6.3"],
     packages=find_packages(exclude=['ez_setup']),
     include_package_data=True,
     test_suite='nose.collector',
@@ -25,12 +21,4 @@ setup(
     #        ('templates/**.mako', 'mako', {'input_encoding': 'utf-8'}),
     #        ('public/**', 'ignore', None)]},
     zip_safe=False,
-    paster_plugins=['PasteScript', 'Pylons'],
-    entry_points="""
-    [paste.app_factory]
-    main = twitter_bootstrap.wsgiapp:make_app
-
-    [paste.app_install]
-    main = pylons.util:PylonsInstaller
-    """,
 )
