@@ -1,0 +1,9 @@
+This adds some public and template files to your pylons project.
+
+To use, add twitter-bootstrap to setup.py as a dependency. Modify your
+config/environment.py and config/middleware.py.
+
+I am still working on using this. will add complete instructions later.
+
+jgardner@jonathangardner.net
+
