@@ -24,13 +24,17 @@
   <link rel="apple-touch-icon" sizes="114x114" href="${url('/img/apple-touch-icon-114x114.png')}">
 </%def>\
 <%def name="title()">Please Define your title()</%def>\
+<%def name="script()">\
+<script src="${url('http://code.jquery.com/jquery-1.7.1.min.js')}"></script>
+<script src="${url('/js/bootstrap.min.js')}"></script>
+</%def>\
 <html lang="en">
 <head>
 ${self.head()}
 </head>
 <body>
 ${next.body()}\
-<script src="${url('http://code.jquery.com/jquery-1.7.1.min.js')}"></script>
-<script src="${url('/js/bootstrap.min.js')}"></script>
+
+${self.script()}\
 </body>
 </html>

@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='twitter_bootstrap',
-    version='0.1',
+    version='0.2',
     description='''Provides the Twitter bootstrap as static files and
     templates.''',
     author='Jonathan Gardner',

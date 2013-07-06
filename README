@@ -1,9 +1,86 @@
-This adds some public and template files to your pylons project.
+twitter_bootstrap
+##################
 
-To use, add twitter-bootstrap to setup.py as a dependency. Modify your
-config/environment.py and config/middleware.py.
+This adds some public and template files to your pylons project so you have
+access to Twitter's bootstrap.
 
-I am still working on using this. will add complete instructions later.
+Installation
+============
 
-jgardner@jonathangardner.net
+To use:
 
+* add twitter-bootstrap to setup.py as a dependency. Be sure to add it to your
+  environment.
+
+* Modify your config/environment.py
+
+    * Add "import twitter_bootstrap" to the top
+
+    * Change the line that reads:
+
+        paths = dict(root=root,
+                     controllers=os.path.join(root, 'controllers'),
+                     static_files=os.path.join(root, 'public'),
+                     templates=[os.path.join(root, 'templates')])
+
+      to: 
+
+        paths = dict(root=root,
+                     controllers=os.path.join(root, 'controllers'),
+                     static_files=[
+                        os.path.join(root, 'public'),
+                        twitter_bootstrap.public_path()],
+                     templates=[
+                        os.path.join(root, 'templates'),
+                        twitter_bootstrap.template_path()])
+
+* Modify config/middleware.py.
+
+    * Change the lines that read:
+
+        if asbool(static_files):
+            # Serve static files
+            static_app = StaticURLParser(config['pylons.paths']['static_files'])
+            app = Cascade([static_app, app])
+
+      to:
+        
+        if asbool(static_files):
+            # Serve static files
+            static_app = [
+                StaticURLParser(path)
+                for path in config['pylons.paths']['static_files']]
+            app = Cascade(static_app+[app])
+
+
+
+How Does It Work?
+=================
+
+You've modified your configuration so that when Pylons is looking for a
+template or static content, it will first look in your template and static
+content directories. If it can't find what it is looking for there, then it
+will also look in twitter_bootstrap's template and static content directories.
+
+NOTE CAREFULLY: If you create a template or static content with the same
+relative file location as in twitter_bootstrap's, then you will override
+twitter_bootstrap's. That could be a good or bad thing. I have put things into
+the bootstrap directory to minimize the chance of a naming conflict.
+
+
+
+Using the Basic Layouts
+=======================
+
+I have provided two layouts I find useful. One is a straightforward, barebones
+HTML5 layout called bootstrap/html5.mako. The other is a simple website layout
+with all the trappings you might need in most websites called
+bootstrap/basic.mako. They contain documentation on how to use them.
+
+If you have a similar layout you think would be universally useful, let me
+know and I can incorporate it. If you think my defaults are terrible, I can
+fix them to make them better. I hope to create something useful enough that
+people actually use them in their finished projects, overriding minimally.
+
+
+Need help? Email me at jgardner@jonathangardner.net

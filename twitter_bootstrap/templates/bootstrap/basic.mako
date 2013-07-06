@@ -33,9 +33,6 @@ Things you may not want to override:
     </ul>
 % endif
 </%def>\
-<%def name="head()">\
-${parent.head()}\
-</%def>\
 <%def name="brand()">Define brand()</%def>\
 <%def name="nav()">\
 <%
@@ -90,9 +87,10 @@ ${self.breadcrumbs()}\
 </%def>\
 <%def name="footer()">\
 <hr/>
-Copyright &copy; 2012 Jonathan Gardner, ALL RIGHTS RESERVED<br/>
-Contact Jonathan Gardner at <a
-href="mailto:jgardner@jonathangardner.net">jgardner@jonathangardner.net</a>.
+This is a sample footer(). Please fix it.</br>
+Copyright &copy; YEAR by YOU, ALL RIGHTS RESERVED<br/>
+Contact YOU at <a
+href="mailto:you@example.com">you@example.com</a>.
 </%def>\
 ${self.header()}
 ${next.body()}
